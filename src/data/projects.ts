@@ -6,6 +6,7 @@ export const projects: Project[] = [
     title: "Food Delivery Platform (Microservices)",
     description:
       "A comprehensive food ordering system built with microservices architecture and event-driven communication using Apache Kafka.",
+    image: "/projects/food-delivery.png",
     complexity: "Advanced",
     repos: [
       {
@@ -72,6 +73,7 @@ export const projects: Project[] = [
     title: "Frontbase - Vercel/Netlify Alternative",
     description:
       "A self-hosted deployment platform for frontend applications with GitHub integration, automated deployments to Cloudflare R2, and edge routing.",
+    image: "/projects/frontbase.png",
     complexity: "Advanced",
     repos: [
       {
@@ -129,6 +131,7 @@ export const projects: Project[] = [
     title: "Real-Time Chat & Audio Calling App",
     description:
       "A feature-rich real-time messaging and calling app with WebRTC video/audio, Socket.io messaging, Firebase push notifications, and PWA capabilities.",
+    image: "/projects/chat-app.png",
     complexity: "Intermediate",
     repos: [
       {
@@ -180,6 +183,7 @@ export const projects: Project[] = [
     title: "Furniture E-Commerce Store",
     description:
       "A furniture e-commerce platform with product catalog, shopping cart (guest + authenticated), order management, and Razorpay payment integration.",
+    image: "/projects/ecommerce.png",
     complexity: "Intermediate",
     repos: [
       {
@@ -232,6 +236,7 @@ export const projects: Project[] = [
     title: "Social Media Platform (x Clone)",
     description:
       "A Twitter/Threads-inspired social media platform with posts, comments, likes, follows, and Google OAuth authentication.",
+    image: "/projects/threads.png",
     complexity: "Intermediate",
     repos: [
       {
@@ -286,6 +291,7 @@ export const projects: Project[] = [
     title: "PGBase - PostgreSQL Deployment Platform",
     description:
       "A self-hosted platform for deploying frontend applications with containerized PostgreSQL databases on Oracle VM infrastructure.",
+    image: "/projects/pgbase.png",
     complexity: "Foundational",
     repos: [
       {
@@ -336,6 +342,7 @@ export const projects: Project[] = [
     title: "Group Video Conferencing Platform",
     description:
       "A WebRTC-based group video calling platform with room management, screen sharing, and Socket.io signaling.",
+    image: "/projects/videochat.png",
     complexity: "Intermediate",
     repos: [
       {
@@ -380,6 +387,7 @@ export const projects: Project[] = [
     title: "Kubernetes CRUD Demo App",
     description:
       "A full-stack CRUD application demonstrating Kubernetes deployment patterns, service discovery, and container orchestration.",
+    image: "/projects/k8s-learning.png",
     complexity: "Intermediate",
     repos: [
       {

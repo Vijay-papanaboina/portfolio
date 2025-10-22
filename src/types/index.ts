@@ -8,6 +8,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  image: string;
   repos: Repository[];
   features: string[];
   techStack: string[];

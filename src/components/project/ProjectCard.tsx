@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2, Layers, Rocket } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Project } from "@/types";
 import { use3DTilt } from "@/hooks/use3DTilt";
+import { techIconMap } from "@/data/techIcons";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,109 +13,90 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
   const tiltProps = use3DTilt();
 
-  const getComplexityColor = (complexity: string) => {
-    switch (complexity) {
-      case "Advanced":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
-      case "Intermediate":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
-      case "Foundational":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-      default:
-        return "";
-    }
-  };
-
-  const getComplexityGradient = (complexity: string) => {
-    switch (complexity) {
-      case "Advanced":
-        return "from-purple-500/10 to-pink-500/10";
-      case "Intermediate":
-        return "from-blue-500/10 to-cyan-500/10";
-      case "Foundational":
-        return "from-green-500/10 to-emerald-500/10";
-      default:
-        return "from-gray-500/10 to-gray-500/10";
-    }
-  };
-
-  const getComplexityIcon = (complexity: string) => {
-    switch (complexity) {
-      case "Advanced":
-        return Rocket;
-      case "Intermediate":
-        return Layers;
-      case "Foundational":
-        return Code2;
-      default:
-        return Code2;
-    }
-  };
-
-  const Icon = getComplexityIcon(project.complexity);
-  const maxVisibleTech = 6;
+  const maxVisibleTech = 5;
   const visibleTech = project.techStack.slice(0, maxVisibleTech);
-  const remainingCount = project.techStack.length - maxVisibleTech;
 
   return (
     <Card
-      className="group relative flex flex-col overflow-hidden border-2 transition-all duration-200 hover:shadow-2xl hover:scale-[1.02] hover:border-primary/30 bg-background hover:-translate-y-1"
+      className="group relative overflow-hidden rounded-3xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] bg-card border-2 hover:border-primary/20 flex flex-col cursor-pointer p-0 h-[600px]"
+      onClick={onViewDetails}
       {...tiltProps}
     >
-      {/* Gradient background - matches complexity theme */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${getComplexityGradient(
-          project.complexity
-        )} opacity-50 group-hover:opacity-100 transition-opacity duration-200`}
-      />
-
-      {/* Background icon decoration - matches skills cards */}
-      <div className="absolute top-2 right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-200">
-        <Icon className="h-16 w-16" />
+      {/* Image Preview at Top - 60% */}
+      <div className="relative w-full h-[60%] overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/30" />
       </div>
 
-      <CardHeader className="pb-4 relative z-10">
-        <div className="mb-3">
-          <Badge className={getComplexityColor(project.complexity)}>
+      {/* Content Section - 40% */}
+      <div className="flex flex-col h-[40%] p-6 justify-between">
+        <div className="space-y-2">
+          {/* Category/Complexity Label */}
+          <Badge
+            variant="secondary"
+            className="text-xs uppercase tracking-wider font-medium"
+          >
             {project.complexity}
           </Badge>
-        </div>
-        <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
-          {project.title}
-        </CardTitle>
-      </CardHeader>
 
-      <CardContent className="pt-0 space-y-5 flex-1 flex flex-col relative z-10">
-        <div className="flex flex-wrap gap-1.5">
-          {visibleTech.map((tech) => (
-            <Badge
-              key={tech}
-              variant="secondary"
-              className="text-xs py-0.5 px-2 h-6 bg-gradient-to-r from-secondary to-secondary/80 hover:from-primary/10 hover:to-primary/5 transition-all"
-            >
-              {tech}
-            </Badge>
-          ))}
-          {remainingCount > 0 && (
-            <Badge
-              variant="secondary"
-              className="text-xs py-0.5 px-2 h-6 bg-muted/50 text-muted-foreground"
-            >
-              +{remainingCount} more
-            </Badge>
-          )}
+          {/* Title */}
+          <h3 className="text-2xl font-bold leading-tight group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+            {project.description}
+          </p>
         </div>
 
-        <Button
-          onClick={onViewDetails}
-          variant="ghost"
-          className="w-full gap-2 mt-auto group/btn group-hover:bg-primary/10 hover:bg-primary/20 transition-all"
-          size="sm"
-        >
-          View Details
-          <ArrowRight className="h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform" />
-        </Button>
-      </CardContent>
+        {/* Bottom Section: Tech Stack Icons + Link */}
+        <div className="flex items-center justify-between pt-3 border-t border-border/50">
+          {/* Tech Stack Icons */}
+          <div className="flex items-center gap-2">
+            {visibleTech.map((tech) => {
+              const techInfo = techIconMap[tech];
+              return techInfo ? (
+                <div
+                  key={tech}
+                  className="w-9 h-9 rounded-full border-2 border-border/50 bg-background/50 flex items-center justify-center hover:scale-110 transition-all"
+                  title={tech}
+                >
+                  <techInfo.icon
+                    className="w-5 h-5"
+                    style={{ color: techInfo.color }}
+                  />
+                </div>
+              ) : (
+                <div
+                  key={tech}
+                  className="w-9 h-9 rounded-full border-2 border-border bg-background flex items-center justify-center text-xs font-semibold text-muted-foreground hover:border-primary hover:text-primary transition-all"
+                  title={tech}
+                >
+                  {tech.slice(0, 2).toUpperCase()}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Check Live Site Link */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onViewDetails();
+            }}
+            className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors group/link whitespace-nowrap cursor-pointer"
+          >
+            Check Live Site
+            <ArrowRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </div>
     </Card>
   );
 }

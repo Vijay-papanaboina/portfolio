@@ -48,7 +48,7 @@ export function Skills() {
               Technologies and tools used across my projects
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
             {skills.map((skill) => {
               const Icon = categoryIcons[skill.category] || Code2;
               const gradient =
