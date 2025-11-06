@@ -13,7 +13,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
   const tiltProps = use3DTilt();
 
-  const maxVisibleTech = 5;
+  const maxVisibleTech = 6;
   const visibleTech = project.techStack.slice(0, maxVisibleTech);
 
   return (

@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, Mail } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 
 export function Contact() {
   return (
@@ -34,7 +35,7 @@ export function Contact() {
                       <Mail className="h-4 w-4 text-primary" />
                     </div>
                     <span className="text-sm font-medium">
-                      vijapapanaboina3@gmail.com
+                      Vijapapanaboina3@gmail.com
                     </span>
                   </a>
                 </Button>
@@ -50,6 +51,27 @@ export function Contact() {
                   >
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                       <Github className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm font-medium">
+                      @Vijay-papanaboina
+                    </span>
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="group w-full justify-start gap-3 h-12 border-2 hover:border-primary/50 hover:bg-primary/5 transition-all"
+                  asChild
+                >
+                  <a
+                    href="https://www.linkedin.com/in/vijay-papanaboina-3a1b57202/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <FaLinkedin
+                        color="DodgerBlue"
+                        className="h-4 w-4 text-primary"
+                      />
                     </div>
                     <span className="text-sm font-medium">
                       @Vijay-papanaboina

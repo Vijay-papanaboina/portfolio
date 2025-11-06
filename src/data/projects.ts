@@ -3,7 +3,7 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: "food-delivery",
-    title: "Food Delivery Platform (Microservices)",
+    title: "Food Delivery Platform",
     description:
       "A comprehensive food ordering system built with microservices architecture and event-driven communication using Apache Kafka.",
     image: "/projects/food-delivery.png",
@@ -42,14 +42,14 @@ export const projects: Project[] = [
       "Restaurant search, filtering, and menu browsing",
     ],
     techStack: [
-      "Node.js",
       "Express",
       "Apache Kafka",
+      "Tailwind CSS",
       "Drizzle ORM",
       "PostgreSQL",
-      "React 19",
       "TypeScript",
-      "Tailwind CSS",
+      "React 19",
+      "Node.js",
       "Zustand",
       "React Query",
       "shadcn/ui",
@@ -62,10 +62,10 @@ export const projects: Project[] = [
       "Order status tracking: pending_payment → confirmed → delivered",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/food-delhivery-backend",
-      "https://github.com/Vijay-papanaboina/food-delhivery-frontend",
-      "https://github.com/Vijay-papanaboina/food-delivery-dashboard",
-      "https://github.com/Vijay-papanaboina/food-restaurant-frontend",
+      "https://github.com/Vijay-papanaboina/Food-Delivery-Backend",
+      "https://github.com/Vijay-papanaboina/Food-Delivery-Customer-Frontend",
+      "https://github.com/Vijay-papanaboina/Food-Delivery-Courier-Frontend",
+      "https://github.com/Vijay-papanaboina/Food-Delivery-Restaurant-Frontend",
     ],
   },
   {
@@ -103,16 +103,16 @@ export const projects: Project[] = [
       "One-click deployment workflow",
     ],
     techStack: [
+      "Cloudflare Workers",
+      "GitHub Actions",
       "Node.js",
+      "React",
       "Express",
       "Drizzle ORM",
       "PostgreSQL",
       "Cloudflare R2",
-      "Cloudflare Workers",
-      "React",
       "Zustand",
       "Tailwind CSS",
-      "GitHub Actions",
     ],
     keyDetails: [
       "Octokit REST API for GitHub integration",
@@ -121,8 +121,8 @@ export const projects: Project[] = [
       "KV-based routing for subdomain/path mapping",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/frontbase_backend",
-      "https://github.com/Vijay-papanaboina/frontbase_frontend",
+      "https://github.com/Vijay-papanaboina/Frontbase-Backend",
+      "https://github.com/Vijay-papanaboina/Frontbase-Frontend",
       "https://github.com/Vijay-papanaboina/frontbase_cloudflare_worker",
     ],
   },
@@ -156,15 +156,15 @@ export const projects: Project[] = [
       "PWA with offline support and service workers",
     ],
     techStack: [
-      "Vue 3",
-      "Pinia",
+      "Vue",
       "Socket.io",
-      "SimplePeer",
       "WebRTC",
-      "Firebase",
       "Supabase",
-      "PostgreSQL",
+      "Firebase",
+      "SimplePeer",
       "Node.js",
+      "Pinia",
+      "PostgreSQL",
       "Express",
     ],
     keyDetails: [
@@ -174,8 +174,8 @@ export const projects: Project[] = [
       "Paginated message fetching (offset + limit)",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/chat-app",
-      "https://github.com/Vijay-papanaboina/chat-app-backend",
+      "https://github.com/Vijay-papanaboina/Chat-App-Frontend",
+      "https://github.com/Vijay-papanaboina/Chat-App-Backend",
     ],
   },
   {
@@ -227,8 +227,8 @@ export const projects: Project[] = [
       "Protected routes for cart, orders, profile",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/Ecommerce_frontend",
-      "https://github.com/Vijay-papanaboina/Ecommerce_backend",
+      "https://github.com/Vijay-papanaboina/Ecommerce-Frontend",
+      "https://github.com/Vijay-papanaboina/Ecommerce-Backend",
     ],
   },
   {
@@ -282,8 +282,8 @@ export const projects: Project[] = [
       "Multer for profile and post images",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/Threads",
-      "https://github.com/Vijay-papanaboina/Threads-backend",
+      "https://github.com/Vijay-papanaboina/Threads-Frontend",
+      "https://github.com/Vijay-papanaboina/Threads-Backend",
     ],
   },
   {
@@ -333,8 +333,8 @@ export const projects: Project[] = [
       "SendGrid/Nodemailer for notifications",
     ],
     githubLinks: [
-      "https://github.com/Vijay-papanaboina/pgbase_frontend",
-      "https://github.com/Vijay-papanaboina/pgbase-backend",
+      "https://github.com/Vijay-papanaboina/PGBase-Frontend",
+      "https://github.com/Vijay-papanaboina/PGBase-Backend",
     ],
   },
   {
@@ -364,7 +364,6 @@ export const projects: Project[] = [
     ],
     techStack: [
       "React 19",
-      "TypeScript",
       "Tailwind CSS",
       "Zustand",
       "Socket.io",
