@@ -1,9 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Rocket, Users, Zap } from "lucide-react";
 import { use3DTilt } from "@/hooks/use3DTilt";
+import { useInView } from "@/hooks/useInView";
+import { cn } from "@/lib/utils";
 
 export function About() {
   const tiltProps = use3DTilt();
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: false });
 
   const highlights = [
     {
@@ -11,44 +14,40 @@ export function About() {
       title: "Full-Stack Expertise",
       description:
         "Proficient in building end-to-end web applications with modern technologies and best practices.",
-      color: "from-purple-500 to-pink-500",
     },
     {
       icon: Rocket,
       title: "Scalable Architecture",
       description:
         "Experienced in designing microservices, implementing event-driven systems, and cloud deployments.",
-      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Zap,
       title: "Real-time Systems",
       description:
         "Specialized in WebRTC, Socket.io, and building responsive real-time communication platforms.",
-      color: "from-yellow-500 to-orange-500",
     },
     {
       icon: Users,
       title: "User-Focused Design",
       description:
         "Creating intuitive interfaces with modern UI libraries and focusing on excellent user experience.",
-      color: "from-green-500 to-emerald-500",
     },
   ];
 
   return (
-    <section id="about" className="relative py-16 md:py-20 overflow-hidden">
-      {/* Animated gradient background - reversed */}
-      <div className="absolute inset-0 bg-gradient-to-tl from-purple-50 via-blue-50 to-cyan-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-cyan-950/20" />
+    <section id="about" className="relative py-16 md:py-20 overflow-hidden bg-background">
+      {/* Subtle radial gradient for depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
-      {/* Animated grid pattern - matches Hero */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-20 dark:bg-grid-slate-700/25" />
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
 
-      <div className="container max-w-7xl mx-auto px-4 relative z-10">
-        <div className="space-y-10">
+      <div ref={ref} className="container max-w-7xl mx-auto px-4 relative z-10">
+        <div className={cn("space-y-10", inView ? "animate-slide-in" : "opacity-0 translate-y-[30px]")}>
           {/* Introduction */}
           <div className="text-center space-y-3">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-primary">
               About Me
             </h2>
             <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">
@@ -65,21 +64,16 @@ export function About() {
             {highlights.map((highlight, index) => (
               <Card
                 key={index}
-                className="group relative overflow-hidden border-2 transition-all duration-200 hover:shadow-xl hover:scale-105 hover:border-primary/30 bg-background/50 backdrop-blur-sm"
+                className="group relative overflow-hidden border bg-card transition-all duration-200 hover:shadow-xl hover:scale-105 hover:border-primary/50"
                 {...tiltProps}
               >
-                {/* Subtle gradient background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${highlight.color} opacity-0 group-hover:opacity-10 transition-opacity duration-200`}
-                />
-
                 <CardContent className="pt-8 pb-8 px-6 relative z-10">
                   <div className="space-y-4 text-center">
                     {/* Icon */}
                     <div
-                      className={`w-16 h-16 mx-auto rounded-xl bg-gradient-to-br ${highlight.color} p-3.5 flex items-center justify-center shadow-lg`}
+                      className="w-16 h-16 mx-auto rounded-xl bg-muted p-3.5 flex items-center justify-center shadow-sm group-hover:bg-primary/10 transition-colors"
                     >
-                      <highlight.icon className="h-8 w-8 text-white" />
+                      <highlight.icon className="h-8 w-8 text-foreground group-hover:text-primary transition-colors" />
                     </div>
 
                     {/* Title */}

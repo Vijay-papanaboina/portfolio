@@ -1,9 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import { Code2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     if (!isHome) {
@@ -16,50 +27,45 @@ export function Header() {
     }
   };
 
+  const navItems = [
+    { label: "Home", id: "hero" },
+    { label: "About", id: "about" },
+    { label: "Projects", id: "projects" },
+    { label: "Skills", id: "skills" },
+    { label: "Contact", id: "contact" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container max-w-7xl mx-auto px-4 flex h-14 items-center">
-        <Link to="/" className="flex items-center gap-2 mr-6">
-          <Code2 className="h-5 w-5" />
-          <span className="font-bold text-lg">Portfolio</span>
+    <header
+      className={cn(
+        "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full z-50 transition-all duration-300",
+        scrolled ? "glass shadow-md py-2" : "bg-transparent py-4"
+      )}
+    >
+      <div className="container px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+            <Code2 className="h-5 w-5 text-primary" />
+          </div>
+          <span className="font-bold text-lg tracking-tight">Vijay Papanaboina</span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium flex-1">
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="cursor-pointer transition-all duration-200 hover:text-foreground hover:scale-105 text-foreground/60 relative group"
-          >
-            Home
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-200" />
-          </button>
-          <button
-            onClick={() => scrollToSection("about")}
-            className="cursor-pointer transition-all duration-200 hover:text-foreground hover:scale-105 text-foreground/60 relative group"
-          >
-            About
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-200" />
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="cursor-pointer transition-all duration-200 hover:text-foreground hover:scale-105 text-foreground/60 relative group"
-          >
-            Projects
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-200" />
-          </button>
-          <button
-            onClick={() => scrollToSection("skills")}
-            className="cursor-pointer transition-all duration-200 hover:text-foreground hover:scale-105 text-foreground/60 relative group"
-          >
-            Skills
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-200" />
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="cursor-pointer transition-all duration-200 hover:text-foreground hover:scale-105 text-foreground/60 relative group"
-          >
-            Contact
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-200" />
-          </button>
+        
+        <nav className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="px-4 py-2 rounded-full text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-primary hover:bg-primary/10 active:scale-95"
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
+
+        {/* Mobile Menu Placeholder - hidden on desktop */}
+        <div className="md:hidden">
+            {/* Add mobile menu implementation if needed later */}
+        </div>
       </div>
     </header>
   );
