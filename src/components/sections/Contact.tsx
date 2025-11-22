@@ -83,6 +83,9 @@ export function Contact() {
               const body = encodeURIComponent(message);
               
               window.location.href = `mailto:vijaypapanaboina3@gmail.com?subject=${subject}&body=${body}`;
+            }}>
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium">
                   Name
                 </label>
                 <Input
