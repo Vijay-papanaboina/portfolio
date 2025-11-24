@@ -9,7 +9,7 @@ import {
   User,
   Github,
   Linkedin,
-  Mail
+  Mail,
 } from "lucide-react";
 
 export function Hero() {
@@ -29,7 +29,10 @@ export function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-background">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-background"
+    >
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
 
@@ -37,13 +40,15 @@ export function Hero() {
       {floatingIcons.map(({ Icon, delay, duration, ...position }, index) => (
         <div
           key={index}
-          className="absolute opacity-5"
+          className="absolute transition-transform duration-300 hover:scale-110 hover:z-50 z-20"
           style={{
             ...position,
             animation: `float ${duration} ease-in-out ${delay} infinite`,
           }}
         >
-          <Icon className="h-12 w-12 md:h-16 md:w-16 text-foreground" />
+          <span className="inline-block opacity-10 hover:opacity-100 text-muted-foreground hover:text-foreground hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-pointer">
+            <Icon className="h-12 w-12 md:h-16 md:w-16" />
+          </span>
         </div>
       ))}
 
@@ -59,7 +64,10 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="space-y-4 animate-slide-in" style={{ animationDelay: "0.1s" }}>
+          <div
+            className="space-y-4 animate-slide-in"
+            style={{ animationDelay: "0.1s" }}
+          >
             <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-primary pb-2">
               Vijay Papanaboina
             </h1>
@@ -68,7 +76,10 @@ export function Hero() {
             </h2>
           </div>
 
-          <p className="text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto leading-relaxed animate-slide-in glass p-6 rounded-xl" style={{ animationDelay: "0.2s" }}>
+          <p
+            className="text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto leading-relaxed animate-slide-in glass p-6 rounded-xl"
+            style={{ animationDelay: "0.2s" }}
+          >
             Building modern web applications with expertise in{" "}
             <span className="text-foreground font-semibold">
               microservices architecture
@@ -85,26 +96,60 @@ export function Hero() {
           </p>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4 animate-slide-in" style={{ animationDelay: "0.3s" }}>
-             <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
-                <a href="https://github.com/Vijay-papanaboina" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                  <Github className="h-6 w-6" />
-                </a>
-             </Button>
-             <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
-                <a href="https://linkedin.com/in/vijay-papanaboina" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                  <Linkedin className="h-6 w-6" />
-                </a>
-             </Button>
-             <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
-                <a href="mailto:vijaypapanaboina3@gmail.com" aria-label="Email Me">
-                  <Mail className="h-6 w-6" />
-                </a>
-             </Button>
+          <div
+            className="flex justify-center gap-4 animate-slide-in"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
+              asChild
+            >
+              <a
+                href="https://github.com/Vijay-papanaboina"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+              >
+                <Github className="h-6 w-6" />
+              </a>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
+              asChild
+            >
+              <a
+                href="https://linkedin.com/in/vijay-papanaboina"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
+              asChild
+            >
+              <a
+                href="mailto:vijaypapanaboina3@gmail.com"
+                aria-label="Email Me"
+              >
+                <Mail className="h-6 w-6" />
+              </a>
+            </Button>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center animate-slide-in" style={{ animationDelay: "0.4s" }}>
+          <div
+            className="flex flex-wrap gap-4 justify-center animate-slide-in"
+            style={{ animationDelay: "0.4s" }}
+          >
             <Button
               size="lg"
               onClick={() => scrollToSection("projects")}
